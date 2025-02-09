@@ -16,14 +16,9 @@ This project is a combination of a Node.js backend and an Android app. All files
    - Log important events
 
 3. Security:
-   - No hardcoded credentials
-   - Secure token storage
-   - HTTPS for all network calls
    - Input validation and sanitization
 
 4. Version Control:
-   - Use meaningful commit messages
-   - Follow feature branch workflow
    - Document significant changes
    - Update .cursorrules when backend changes
 

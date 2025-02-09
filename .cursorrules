@@ -1,0 +1,35 @@
+This project is a combination of an node.js backend and an android app. All files under /server are part of the backend. All other files are part of the android app.
+
+
+## Android Part
+- Only use jetpack compose for building the UI.
+
+
+## Backend Part
+**Each time your modification adjusts the backend functions below, please prompt for user the adjust the file .cursorrules.**
+1. Server Setup:
+- Created a Node.js project using Express.js
+- Set up essential dependencies: express, jsonwebtoken, cors, and dotenv
+- Configured environment variables for PORT (3000) and SECRET_KEY
+2. Authentication Endpoints:
+- /oauth/token (POST): OAuth token endpoint that:
+  - Accepts username/password with grant_type=password
+  - Validates credentials against mock users
+  - Returns a JWT token with 1-hour expiration
+- /api/user (GET): Protected endpoint that:
+  - Requires Bearer token authentication
+  - Returns user information if token is valid
+3. Mock User Database:
+- Implemented two test accounts:
+  - demo@example.com / demo123
+  - test@example.com / test123
+- Each user has basic profile info (email and name)
+4. Web Interface:
+- Created a clean, responsive login page
+- Includes error handling and success messages
+- Demonstrates the OAuth flow in action
+5. Security Features:
+- CORS enabled for cross-origin requests
+- JWT-based token authentication
+- Bearer token scheme for API authentication
+- Token expiration (1 hour)

@@ -1,0 +1,29 @@
+# Node.js backend
+/server/node_modules
+/server/.env
+/server/npm-debug.log
+/server/.DS_Store
+
+# Android
+*.iml
+.gradle
+/local.properties
+/.idea
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# General
+*.log
+.env
+.env.local
+.env.*.local

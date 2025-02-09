@@ -1,54 +1,102 @@
-This project is a combination of an node.js backend and an android app. All files under /server are part of the backend. All other files are part of the android app.
+# OAuth Demo Project Development Guide
 
+This project is a combination of a Node.js backend and an Android app. All files under /server are part of the backend. All other files are part of the android app.
+
+## Development Guidelines
+1. Code Organization:
+   - Follow clean architecture principles
+   - Separate data, domain, and presentation layers
+   - Use dependency injection
+   - Implement repository pattern
+
+2. Error Handling:
+   - Provide clear error messages
+   - Handle network errors gracefully
+   - Validate all user inputs
+   - Log important events
+
+3. Security:
+   - No hardcoded credentials
+   - Secure token storage
+   - HTTPS for all network calls
+   - Input validation and sanitization
+
+4. Version Control:
+   - Use meaningful commit messages
+   - Follow feature branch workflow
+   - Document significant changes
+   - Update .cursorrules when backend changes
+
+5. Testing:
+   - Test with both test accounts
+   - Verify OAuth flow completion
+   - Check token storage and retrieval
+   - Validate error scenarios
+   - Test network error handling
 
 ## Android Part Requirements
-- Only use jetpack compose for building the UI.
-- All dependencies and versions must be managed in /gradle/libs.versions.toml
+1. UI Requirements:
+   - Use Jetpack Compose exclusively for building the UI
+   - Follow Material 3 design guidelines
+   - Implement responsive layouts
+   - All dependencies and versions must be managed in /gradle/libs.versions.toml
 
+2. Authentication Flow:
+   - Use Chrome Custom Tabs for OAuth
+   - Handle redirect URI (authdemo://oauth/callback)
+   - Store tokens in Android Account Manager
+   - Auto-redirect to login when needed
+
+3. Features:
+   - Profile management
+   - Logout functionality
+   - Token refresh handling
+   - Error handling and user feedback
 
 ## Backend Part Functions
 **Each time your modification adjusts the backend functions below, please prompt for user the adjust the file .cursorrules.**
+
 1. Server Setup:
-- Created a Node.js project using Express.js
-- Set up essential dependencies: express, jsonwebtoken, cors, and dotenv
-- Configured environment variables for PORT (3000) and SECRET_KEY
+   - Created a Node.js project using Express.js
+   - Set up essential dependencies: express, jsonwebtoken, cors, and dotenv
+   - Configured environment variables for PORT (3000) and SECRET_KEY
 
 2. Authentication Endpoints:
-- /oauth/authorize (GET): OAuth authorization endpoint that:
-  - Validates client_id and redirect_uri
-  - Validates response_type=code
-  - Shows login form for user authentication
-- /oauth/authorize (POST): Login form submission that:
-  - Validates user credentials
-  - Generates authorization code
-  - Redirects to client with code
-- /oauth/token (POST): OAuth token endpoint that:
-  - Validates grant_type=authorization_code
-  - Validates authorization code, client_id, and redirect_uri
-  - Returns JWT token with 1-hour expiration
-- /api/user (GET): Protected endpoint that:
-  - Requires Bearer token authentication
-  - Returns user information if token is valid
+   - /oauth/authorize (GET): OAuth authorization endpoint that:
+     - Validates client_id and redirect_uri
+     - Validates response_type=code
+     - Shows login form for user authentication
+   - /oauth/authorize (POST): Login form submission that:
+     - Validates user credentials
+     - Generates authorization code
+     - Redirects to client with code
+   - /oauth/token (POST): OAuth token endpoint that:
+     - Validates grant_type=authorization_code
+     - Validates authorization code, client_id, and redirect_uri
+     - Returns JWT token with 1-hour expiration
+   - /api/user (GET): Protected endpoint that:
+     - Requires Bearer token authentication
+     - Returns user information if token is valid
 
 3. Mock User Database:
-- Implemented two test accounts:
-  - demo@example.com / demo123
-  - test@example.com / test123
-- Each user has basic profile info (email and name)
+   - Implemented two test accounts:
+     - demo@example.com / demo123
+     - test@example.com / test123
+   - Each user has basic profile info (email and name)
 
 4. Web Interface:
-- Created a clean, responsive login page
-- Shows app info and requested permissions
-- Includes error handling and validation
-- Supports OAuth authorization code flow
+   - Created a clean, responsive login page
+   - Shows app info and requested permissions
+   - Includes error handling and validation
+   - Supports OAuth authorization code flow
 
 5. Security Features:
-- CORS enabled for cross-origin requests
-- JWT-based token authentication
-- Bearer token scheme for API authentication
-- Token expiration (1 hour)
-- Authorization codes expire after 10 minutes
-- One-time use authorization codes
+   - CORS enabled for cross-origin requests
+   - JWT-based token authentication
+   - Bearer token scheme for API authentication
+   - Token expiration (1 hour)
+   - Authorization codes expire after 10 minutes
+   - One-time use authorization codes
 
 ## User Flow
 1. Android App Flow:
@@ -73,3 +121,9 @@ This project is a combination of an node.js backend and an android app. All file
    - App shows user profile using token
    - Supports logout functionality
    - Auto-redirects to login if token invalid
+
+## Documentation
+- Maintain clear README.md
+- Document setup procedures
+- Keep API documentation updated
+- Include test account details
